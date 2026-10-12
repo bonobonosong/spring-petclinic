@@ -25,7 +25,7 @@ pipeline {
         }
         // Docker Image 생성
         stage('Docker Image Create') {
-            step{
+            steps {
                 echo 'Docker Image Create'
                 sh '''
                 docker build -t spring-petclinic:${BUILD_NUMBER} .
@@ -35,7 +35,7 @@ pipeline {
         }
         // Docker hub Image Push
         stage('Docker Image Push') {
-            step {
+            steps {
                 echo 'Docker Image Push'
                 // Docker Login
                 sh 'echo ${DOCKERHUB_CRED_PSW} | docker login -u ${DOCKERHUB_CRED_USR} --password-stdin'
