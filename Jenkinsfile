@@ -44,10 +44,11 @@ pipeline {
                 sh 'docker image push sbg1995/spring-petclinic:latest'
             }
             post {
-                always{
+                always {
                     sh '''
                     docker rmi -f spring-petclinic:${BUILD_NUMBER}
                     docker rmi -f sbg1995/spring-petclinic:latest
+                    '''
                 }
             }
         }
